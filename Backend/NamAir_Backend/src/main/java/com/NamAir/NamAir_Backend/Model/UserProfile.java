@@ -26,16 +26,4 @@ public class UserProfile {
 
     private LocalDateTime dateCreated = LocalDateTime.now();
 
-    // No-argument constructor
-    public UserProfile() {
-    }
-
-    // All-arguments constructor
-    public UserProfile(String name, String surname, String email, String phoneNumber, String idNumber) {
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.idNumber = idNumber;
-    }
 }

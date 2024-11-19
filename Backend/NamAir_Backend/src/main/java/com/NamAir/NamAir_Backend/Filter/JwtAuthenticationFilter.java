@@ -1,6 +1,6 @@
 package com.NamAir.NamAir_Backend.Filter;
 
-import com.NamAir.NamAir_Backend.Services.CustomUserDetailsService;
+import com.NamAir.NamAir_Backend.Services.UserProfileService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,9 +17,9 @@ import java.io.IOException;
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final com.NamAir.NamAir_Backend.Util.JwtUtil jwtUtil;
-    private final CustomUserDetailsService userDetailsService;
+    private final UserProfileService userDetailsService;
 
-    public JwtAuthenticationFilter(com.NamAir.NamAir_Backend.Util.JwtUtil jwtUtil, CustomUserDetailsService userDetailsService) {
+    public JwtAuthenticationFilter(com.NamAir.NamAir_Backend.Util.JwtUtil jwtUtil, UserProfileService userDetailsService) {
         this.jwtUtil = jwtUtil;
         this.userDetailsService = userDetailsService;
     }
