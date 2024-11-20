@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/auth")
 public class BookingController {
     @Autowired
     private BookingService bookingService;

@@ -15,7 +15,7 @@ public class AirportController {
     private AirportService airportService;
 
     // Endpoint to get all airports
-    @GetMapping("/api/airports")
+    @GetMapping("/api/auth/airports")
     public List<Airport> getAirports() {
         //airportService.Add();
         return airportService.getAllAirports();

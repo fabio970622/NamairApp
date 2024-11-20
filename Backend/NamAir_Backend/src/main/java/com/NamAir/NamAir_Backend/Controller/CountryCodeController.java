@@ -14,7 +14,7 @@ public class CountryCodeController {
     @Autowired
     private CountryCodeService countryCodeService;
 
-    @GetMapping("/api/country-codes")
+    @GetMapping("/api/auth/country-codes")
     public List<CountryCode> getAllCountryCodes() {
         //countryCodeService.Add();
         return countryCodeService.getAllCountryCodes();

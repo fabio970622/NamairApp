@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/profiles")
+@RequestMapping("/api/auth/profiles")
 public class UserProfileController {
     @Autowired
     private UserProfileService userProfileService;
