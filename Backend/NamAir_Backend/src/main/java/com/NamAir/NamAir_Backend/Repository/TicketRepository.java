@@ -17,8 +17,8 @@ public interface TicketRepository extends MongoRepository<Ticket, String> {
     List<Ticket> findByPassengerId(String passengerId);
 
     @Aggregation(pipeline = {
-            "{ '$match': { 'departureDate': ?0 } }", // Match documents with the given departureDate
-            "{ '$project': { 'flightTime': 1 } }" // Project only the 'flightTime' field
+            "{ '$match': { 'departureDate': ?0 } }",
+            "{ '$project': { 'flightTime': 1 } }"
     })
     List<String> findBookedTimesByDate(LocalDate departureDate);
 }

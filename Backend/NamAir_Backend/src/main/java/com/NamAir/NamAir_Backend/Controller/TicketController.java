@@ -71,7 +71,7 @@ public class TicketController {
         return ticketService.getTicketDetails(departureDate, dateRequest.getFlightTime());
     }
 
-    // Endpoint for rescheduling a ticket
+    // Endpoint for Paymentupdate a ticket
     @PostMapping("/paymentUpdate")
     public PaymentUpdateResponse rescheduleTicket(@RequestBody PaymentUpdateRequest paymentUpdateRequest) {
         String paymentResponse = ticketService.paymentUpdate(paymentUpdateRequest.getTicketId());

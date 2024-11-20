@@ -17,15 +17,15 @@ public class Ticket {
     private String arrivalAirport;
     private LocalDate departureDate;
     private String flightTime;
-    private double ticketPrice; // The price of the ticket
-    private double rescheduledPrice; // Price for rescheduled ticket
-    private double cancelledAmount; // Amount after canceling (ticket price minus refund)
-    private double refundAmount; // Calculated refund based on policy
+    private double ticketPrice;
+    private double rescheduledPrice;
+    private double cancelledAmount;
+    private double refundAmount;
 
-    private String passengerId; // Foreign reference to Passenger
+    private String passengerId;
 
-    private String status; // Booked, Rescheduled, Canceled
-    private String refundStatus; // 100%, 50%, No Refund
+    private String status;
+    private String refundStatus;
     private String arrivalTime;
     private double paymentAmount;
 }

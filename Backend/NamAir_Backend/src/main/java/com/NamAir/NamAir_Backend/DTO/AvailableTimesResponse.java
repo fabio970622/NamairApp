@@ -8,7 +8,6 @@ import java.util.List;
 public class AvailableTimesResponse {
     private List<String> availableTimes;
 
-    // Constructor to initialize the availableTimes field
     public AvailableTimesResponse(List<String> availableTimes) {
         this.availableTimes = availableTimes;
     }

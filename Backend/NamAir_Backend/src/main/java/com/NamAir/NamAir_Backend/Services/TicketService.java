@@ -32,8 +32,8 @@ public class TicketService {
         ticket.setTicketPrice(price);
         ticket.setStatus("Waiting for payment");
         ticket.setRefundAmount(0.0);
-        ticket.setRescheduledPrice(0.0); // Initial rescheduled price is the same as the booked price
-        ticket.setCancelledAmount(0.0); // No cancellation amount initially
+        ticket.setRescheduledPrice(0.0);
+        ticket.setCancelledAmount(0.0);
         ticket.setRefundStatus("No Refund");
         ticket.setArrivalTime(calculateArrivalTime(flightTime));
         ticket.setPaymentAmount(0.0);
@@ -54,8 +54,8 @@ public class TicketService {
         // Calculate reschedule fee (difference in price + R10)
         double rescheduleFee = calculateRescheduleFee(originalPrice, newPrice);
 
-        ticket.setDepartureDate(newDepartureDate); // Update the flight date
-        ticket.setRescheduledPrice(newPrice); // Update the rescheduled price
+        ticket.setDepartureDate(newDepartureDate);
+        ticket.setRescheduledPrice(newPrice);
         ticket.setStatus("Rescheduled");
         ticketRepository.save(ticket);
         return rescheduleFee;
@@ -88,13 +88,13 @@ public class TicketService {
         ticket.setRefundAmount(refundAmount); // Set the refund amount
         ticket.setCancelledAmount(ticket.getTicketPrice() - refundAmount); // Final canceled amount
         ticket.setStatus("Cancelled");
-        ticketRepository.save(ticket); // Save the updated ticket
+        ticketRepository.save(ticket);
         return refundAmount;
     }
 
     // Method to get all tickets for a user
     public List<Ticket> getAllTicketsForUser(String userId) {
-        return ticketRepository.findByUserId(userId); // Fetch tickets by userId
+        return ticketRepository.findByUserId(userId);
     }
 
     // Helper method to calculate ticket price
@@ -108,15 +108,13 @@ public class TicketService {
 
     // Helper method to calculate the reschedule fee
     public double calculateRescheduleFee(double originalPrice, double newPrice) {
-        return Math.abs(originalPrice - newPrice) + 10.00; // Difference + R10
+        return Math.abs(originalPrice - newPrice) + 10.00;
     }
 
     public TicketDetailsResponse getTicketDetails(LocalDate departureDate, String flightTime) {
-        // Logic to calculate ticket price and arrival time based on flightTime
         double price = calculatePrice(departureDate);
         String arrivalTime = calculateArrivalTime(flightTime);
 
-        // Prepare the response
         TicketDetailsResponse ticketDetailsResponse = new TicketDetailsResponse();
         ticketDetailsResponse.setPrice(price);
         ticketDetailsResponse.setArrivalTime(arrivalTime);
@@ -126,24 +124,18 @@ public class TicketService {
 
     // Example method to calculate arrival time based on flight time
     private String calculateArrivalTime(String flightTime) {
-        // Assuming flightTime is in "HH:mm" format, add logic to calculate arrival time
-        // This is a simple placeholder logic
-        return "18:00"; // For example
+        return "18:00";
     }
 
     public String paymentUpdate(String ticketId) {
-        // Find the ticket by its ID
         Ticket ticket = ticketRepository.findById(ticketId)
                 .orElseThrow(() -> new RuntimeException("Ticket not found"));
 
-        // Update the ticket status and payment amount
         ticket.setStatus("Paid");
         ticket.setPaymentAmount(ticket.getTicketPrice());
 
-        // Save the updated ticket
         ticketRepository.save(ticket);
 
-        // Return a confirmation message
         return "Ticket payment successful!";
     }
 }

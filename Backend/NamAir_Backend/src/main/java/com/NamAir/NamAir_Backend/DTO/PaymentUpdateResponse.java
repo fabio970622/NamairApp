@@ -8,7 +8,6 @@ import java.util.List;
 public class PaymentUpdateResponse {
     private String paymentResponse;
 
-    // Constructor to initialize the paymentResponse field
     public PaymentUpdateResponse(String paymentResponse) {
         this.paymentResponse = paymentResponse;
     }
